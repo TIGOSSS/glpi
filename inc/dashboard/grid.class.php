@@ -282,7 +282,7 @@ HTML;
          $dropdown_dashboards = self::dropdownDashboard("", [
             'value'        => $this->current,
             'display'      => false,
-            'class'        => 'dashboard_select',
+            'class'        => 'dashboard_select form-select',
             'can_view_all' => $can_view_all,
             'noselect2'    => true,
          ]);
@@ -617,9 +617,9 @@ HTML;
    public function displayAddDashboardForm() {
       $rand = mt_rand();
 
-      echo "<form class='card no-shadow display-add-dashboard-form'>";
+      echo "<form class='no-shadow display-add-dashboard-form'>";
 
-      echo "<div class='field'>";
+      echo "<div class='mb-3'>";
       echo "<label for='title_$rand'>".__("Title")."</label>";
       echo "<div>";
       echo Html::input('title', ['id' => "title_$rand"]);
@@ -627,7 +627,8 @@ HTML;
       echo "</div>"; // .field
 
       echo Html::submit(_x('button', "Add"), [
-         'class' => 'submit vsubmit submit-new-dashboard'
+         'icon'  => 'fas fa-plus',
+         'class' => 'btn btn-primary submit-new-dashboard'
       ]);
 
       echo "</form>"; // .card.display-widget-form
@@ -771,8 +772,7 @@ HTML;
       echo __("Direct link");
       echo "<div class='copy_to_clipboard_wrapper'>";
       echo Html::input('direct_link', [
-         'value'    => $embed_url,
-         'style'    => 'width: calc(100% - 38px)'
+         'value' => $embed_url,
       ]);
       echo "</div><br>";
 
@@ -780,8 +780,7 @@ HTML;
       echo __("Iframe");
       echo "<div class='copy_to_clipboard_wrapper'>";
       echo Html::input('iframe_code', [
-         'value'    => $iframe,
-         'style'    => 'width: calc(100% - 38px)'
+         'value' => $iframe,
       ]);
       echo "</div>";
       echo "</fieldset><br>";
@@ -800,7 +799,7 @@ HTML;
       $rand   = mt_rand();
       $values = [];
 
-      echo "<form class='card no-shadow display-rights-form'>";
+      echo "<form class='no-shadow display-rights-form'>";
 
       echo "<label for='dropdown_rights_id$rand'>".
            __("Or share the dashboard to these target objects:").
@@ -820,8 +819,9 @@ HTML;
          }
       }
       echo ShareDashboardDropdown::show($rand, $values);
-      echo "<br><br>";
+      echo "<br>";
 
+      echo "<div class='d-flex align-items-center my-3'>";
       echo __('Personal') . "&nbsp;";
       echo Html::showToolTip(__("A personal dashboard is not visible by other administrators unless you share explicitely the dashboard"))."&nbsp";
       echo Dropdown::showYesNo(
@@ -832,9 +832,12 @@ HTML;
             'display' => false
          ]
       );
-      echo "<br><br>";
+      echo "</div>";
 
-      echo "<a href='#' class='vsubmit save_rights'>".__("Save")."</a>";
+      echo "<a href='#' class='btn btn-primary save_rights'>
+         <i class='fas fa-save'></i>
+         <span>".__("Save")."</span>
+      </a>";
 
       Html::closeForm(true);
    }
