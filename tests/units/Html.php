@@ -830,7 +830,7 @@ class Html extends \GLPITestCase {
 
    public function testInput() {
       $name = 'in_put';
-      $expected = '<input type="text" name="in_put"  />';
+      $expected = '<input type="text" name="in_put" class="form-control" />';
       $this->string(\Html::input($name))->isIdenticalTo($expected);
 
       $options = [
@@ -846,7 +846,7 @@ class Html extends \GLPITestCase {
          'min'       => '10',
          'value'     => 'myval',
       ];
-      $expected = '<input type="number" name="in_put" min="10" value="myval" />';
+      $expected = '<input type="number" name="in_put" min="10" value="myval" class="form-control" />';
       $this->string(\Html::input($name, $options))->isIdenticalTo($expected);
 
    }
