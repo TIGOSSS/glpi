@@ -4439,8 +4439,6 @@ JAVASCRIPT;
 
 
    function showForm($ID, $options = []) {
-      global $CFG_GLPI;
-
       // show full create form only to tech users
       if ($ID <= 0 && Session::getCurrentInterface() !== "central") {
          return;
@@ -4659,11 +4657,6 @@ JAVASCRIPT;
          $canupdate = false;
          // No update for actors
          $options['_noupdate'] = true;
-      }
-
-      $showuserlink              = 0;
-      if (Session::haveRight('user', READ)) {
-         $showuserlink = 1;
       }
 
       if ($options['template_preview']) {
