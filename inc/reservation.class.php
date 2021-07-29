@@ -413,7 +413,7 @@ class Reservation extends CommonDBChild {
             $name = sprintf(__('%1$s - %2$s'), $type, $name);
          }
 
-         $all = "<a class='vsubmit view-all' href='reservation.php?reservationitems_id=0'>".
+         $all = "<a class='btn btn-primary ms-2 view-all' href='reservation.php?reservationitems_id=0'>".
                __('View all items').
                "&nbsp;<i class='fas fa-eye'></i>".
             "</a>";
